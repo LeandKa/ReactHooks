@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import Layout from './components/UI/Layout';
+import Tarefa from './components/Task/Lists';
+import Form from './components/Task/Form';
+import FormEdit from './components/Task/FormEdit.js'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout></Layout>
+      <div className="App">
+      <Switch>
+        <Route path="/" component={Tarefa} exact></Route>
+        <Route path="/posts" exact component={Form}></Route>
+        <Route path="/posts/:id" component={FormEdit}></Route>
+      </Switch>
+      </div>
+    </Router>
   );
 }
 
